@@ -63,17 +63,27 @@ namespace ConsoleApp1
             jim a = new jim(say,"america");
             tom b = new tom(say,"france");
             //say.who_said("c");
-            EventTest e = new EventTest(); /* 实例化对象,第一次没有触发事件 */
-            subscribEvent v = new subscribEvent(); /* 实例化对象 */
-            e.ChangeNum += v.printf; /* 注册 */
-            showenvent t = new showenvent();
-            e.ChangeNum += t.printf;
-            e.SetValue(7);
-            e.SetValue(11);
-            hello test = new hello();
-            test.print_v();
-            helloTinterface<string> printT = new helloTinterface<string>();
-            printT.printT("show printT");
+            //EventTest e = new EventTest(); /* 实例化对象,第一次没有触发事件 */
+            //subscribEvent v = new subscribEvent(); /* 实例化对象 */
+            //e.ChangeNum += v.printf; /* 注册 */
+            //showenvent t = new showenvent();
+            //e.ChangeNum += t.printf;
+            //e.SetValue(7);
+            //e.SetValue(11);
+            //hello test = new hello();
+            //test.print_v();
+            //helloTinterface<string> printT = new helloTinterface<string>();
+            //printT.printT("show printT");
+            /************************************catevent***************************/
+            Cat cat = new Cat();
+            Mouse m = new Mouse();
+            People p = new People();
+            //关联绑定 
+            cat.CatCall += new CatCallEventHandler(m.MouseRun);
+            cat.CatCall += new CatCallEventHandler(p.WakeUp);
+            cat.OnCatCall();
+
+            Console.ReadKey();
         }
     }
 }
